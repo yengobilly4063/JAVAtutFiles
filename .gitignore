@@ -1,3 +1,5 @@
-/.idea/*
-/out/*
-.iml
+#Thsi will ignore all the files, folders or file extensions that I pecify here. :)
+.idea/
+out/
+*.iml
+*.iws

@@ -1,16 +1,19 @@
 package com.codz;
 
 public class Car {
-    private String name = "Unknown Car";
-    private boolean engine = true;
+    private String name;
+    private boolean engine;
     private int cylinders;
-    private int wheels = 4;
+    private int wheels;
     private int doors;
     protected int speed;
 
     public Car(int cylinders, int doors) {
         this.cylinders = cylinders;
         this.doors = doors;
+        this.name = "Unknown Car";
+        this.engine = true;
+        this.wheels = 4;
     }
 
     public String getName() {
@@ -43,10 +46,12 @@ public class Car {
 
 
     public  void startEngine(){
+        System.out.println("Car() --> startEngine()");
         System.out.println("Starting your " + getName() + "'s engine");
     }
 
     public int accelerate(int speed){
+        System.out.println("Car() --> accelerate()");
         System.out.println("Your " + getName() + " is accelerating...");
         System.out.println("adding speed ... " + speed);
         this.speed += speed;
@@ -55,6 +60,7 @@ public class Car {
     }
 
     public int brake(int speed){
+        System.out.println("Car() --> brake()");
         System.out.println("Your " + getName() + " is decelerating...");
         System.out.println("reducing speed by ... " + speed);
         this.speed -= speed;

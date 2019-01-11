@@ -4,7 +4,7 @@ public class RandomCar {
 
     public Car randomCar(){
 
-        int randomNumber = (int)(Math.random() * 2 + 1);
+        int randomNumber = (int)(Math.random() * 3 + 1);
         System.out.println("Random number is " + randomNumber);
 
         switch (randomNumber){
@@ -12,6 +12,8 @@ public class RandomCar {
                 return new Volkswagen(16, 4);
             case 2:
                 return new Honda(24, 4);
+            case 3:
+                return new Car(32, 4);
         }
 
         return null;
