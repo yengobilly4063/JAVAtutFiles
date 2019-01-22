@@ -1,5 +1,6 @@
 package com.codz;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -35,6 +36,8 @@ public class Main {
                     searchForItem();
                     break;
                 case 6:
+                    processArrayList();
+                case 7:
                     quit = true;
                     System.out.println("Exiting program ...");
                     break;
@@ -51,7 +54,8 @@ public class Main {
         System.out.println("\t3 - To modify an item in the list.");
         System.out.println("\t4 - To remove an item in the list.");
         System.out.println("\t5 - To search an item in the list.");
-        System.out.println("\t6 - To quit the application.");
+        System.out.println("\t6 - To process the array/List.");
+        System.out.println("\t7 - To quit the application.");
     }
 
     public static void addItem(){
@@ -60,29 +64,38 @@ public class Main {
     }
 
     public static void modifyItem(){
-        System.out.print("Please enter item number ");
-        int itmNo = scan.nextInt();
-        scan.nextLine();
+        System.out.print("Please enter item name ");
+        String itmNo = scan.nextLine();
         System.out.print("Enter replacement item : ");
         String newItem = scan.nextLine();
-        groceryList.modifyGroceryItem( (itmNo-1), newItem);
+        groceryList.modifyGroceryItem( (itmNo), newItem);
     }
 
     public static void removeItem(){
-        System.out.print("Please enter item number ");
-        int itmNo = scan.nextInt();
-        scan.nextLine();
-        groceryList.removeGroceryItem(itmNo-1);
+        System.out.print("Please enter item name to remove ");
+        String itmNo = scan.nextLine();
+        groceryList.removeGroceryItem(itmNo);
     }
 
     public static void searchForItem(){
         System.out.print("Enter item to search for : ");
         String searchItem = scan.nextLine();
-        if (groceryList.findItem(searchItem) != null){
+        if (groceryList.onFile(searchItem)){
             System.out.println("Found " + searchItem + " in grocery list");
         }else{
             System.out.println(searchItem + " is not in grocery list.");
         }
+    }
+
+    public static void processArrayList(){
+        ArrayList<String>  newArray = new ArrayList<String>();
+        newArray.addAll(groceryList.getGroceryList());
+
+        ArrayList<String> nextArray = new ArrayList<String>(groceryList.getGroceryList());
+
+        String[] myArray = new String[groceryList.getGroceryList().size()];
+        myArray = groceryList.getGroceryList().toArray(myArray);
+
 
     }
 }
